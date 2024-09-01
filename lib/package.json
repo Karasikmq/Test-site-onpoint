@@ -1,0 +1,7 @@
+{
+    "scripts": {
+      "build": "babel src --out-dir lib",
+      "watch": "babel src --out-dir lib --watch"
+    }
+  }
+  
