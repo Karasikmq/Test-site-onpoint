@@ -1,0 +1,299 @@
+/* основной слайдер */
+
+.slides-main {
+    display: flex; 
+    transition: transform 1s ease; /* Плавный переход при смене слайда */
+  }
+
+  .slide-main {
+    background-image: url(../img/back.png);
+    min-width: 100%; 
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    padding: 20px;
+    box-sizing: border-box;
+    cursor: pointer; 
+  }
+
+  .slider-main {
+    position: relative;
+    width: 100%;
+    max-width: 1024px;
+    max-height: 768px; 
+    overflow: hidden; 
+    border-radius: 10px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+  }
+  
+  .slider-main::before,
+  .slider-main::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    z-index: 1;
+}
+
+  /* Области клика */
+.click-zone {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 5%; 
+    z-index: 2; 
+    cursor: pointer; 
+  }
+
+  .click-zone.left {
+    left: 0;
+    background: none;
+  }
+
+  .click-zone.right {
+    right: 0;
+    background: none;
+}
+  
+
+/* мини слайдер */
+
+.slider-container {
+	position: relative;
+	overflow: hidden; 
+  }
+
+  @keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+  }
+
+  .fade-in {
+    opacity: 0;
+    animation: fadeIn 1s forwards; 
+  }
+
+  .slider.active .fade-in {
+    animation: fadeIn 1s forwards;
+  }
+
+  .slider-toggle {
+	display: none; /* Скрывает переключатель для открытия слайдера */
+  }
+  
+  .open-slider-button {
+	background-color: #ff6a9f;
+	border: none;
+	border-radius: 60px;
+	padding: 15px 35px 15px 20px;
+	display: flex;
+	align-items: center;
+	width: 265px;
+	gap: 30px;
+	font-size: 34px;
+	cursor: pointer;
+  }
+  
+  .slider {
+	position: fixed; /* Перекрывает часть предыдущего контента */
+	z-index: 2;
+	top: 51%;
+    left: 254%;
+    width: 70%;
+    height: 70%;
+	transform: translate(-50%, -50%);
+	background-color: white;
+	display: none; 
+  }
+
+  .slider.active {
+    display: block; /* Показывает слайдер, когда активен */
+}
+
+.slider-text-block {
+	text-align: left;
+	margin-left: 20%;
+	margin-bottom: 20px;
+	font-size: 24px;
+	width: 70%;
+}
+
+.radio-block {
+	display: flex;
+	margin-left: 20%;
+}
+
+.pb20 {
+	padding-bottom: 20px;
+}
+
+.title-text-slider {
+	font-size: 90px;
+    letter-spacing: 0.1em;
+    margin-bottom: 30px;
+}
+
+.up-text {
+	font-size: 40px;
+	text-align: left;
+	margin-left: 20%;
+  margin-bottom: 160px;
+}
+
+.close-button {
+    z-index: 10;
+	position: absolute;
+    top: 0px;
+    right: -20px;
+    cursor: pointer;
+    border: none;
+    background: none;
+    font-size: 75px;
+    color: #000;
+}
+  
+  .slide {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;  
+	height: 100%;  
+	display: none; 
+	justify-content: center;
+	text-align: center;
+	background-color: #fff;
+	padding: 20px;
+    border: 1px solid red;
+    border-radius: 20px;
+  }
+  
+  #slideFirst:checked ~ .slideFirst,
+  #slideSecond:checked ~ .slideSecond {
+	display: flex; /* Показывает только активный слайд */
+	flex-direction: column;
+  }
+  
+  .nav-button {
+	cursor: pointer;
+	border: none; 
+	background: none; 
+	padding: 10px;
+	display: inline-block;
+	position: relative; 
+	width: 24px; 
+	height: 24px; 
+	font-size: 0; /* убираем так стандартные кнопки */
+	line-height: 0; 
+	margin: 0; 
+	color: transparent; 
+  }
+  
+  .nav-button.prev::before,
+  .nav-button.prev::after {
+	content: "";
+	position: absolute;
+	width: 2px; 
+	height: 16px; 
+	background-color: #000; 
+  }
+  
+  .nav-button.next::before {
+	transform: rotate(45deg); 
+	top: 14px;
+	left: 37px;
+  }
+  
+  .nav-button.next::after {
+	transform: rotate(-45deg); 
+	top: 4px;
+	left: 37px;
+  }
+  
+  .nav-button.next::before,
+  .nav-button.next::after {
+	content: "";
+	position: absolute;
+	width: 2px; 
+	height: 16px; 
+	background-color: #000; 
+  }
+  
+  .nav-button.prev::before {
+	transform: rotate(-45deg); 
+	top: 14px;
+	left: 8px;
+  }
+  
+  .nav-button.prev::after {
+	transform: rotate(45deg); 
+	top: 4px;
+	left: 8px;
+  }
+  
+  .radio-button {
+	cursor: pointer;
+	width: 20px;  
+	height: 20px; 
+	display: inline-block;
+	margin: 5px;
+	border-radius: 50%; 
+	background-color: transparent; 
+	border: 2px solid #000; 
+	position: relative; 
+  }
+  
+  .radio-button::after {
+	content: "";
+	width: 10px; 
+	height: 10px; 
+	background-color: #fff; 
+	border-radius: 50%; 
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%); 
+  }
+  
+  #slideFirst:checked ~ .slideFirst .radio-button[for="slideFirst"],
+  #slideSecond:checked ~ .slideSecond .radio-button[for="slideSecond"] {
+	background-color: #cf578d; 
+	border: 2px solid #cf578d; 
+  }
+  
+  #slideFirst:checked ~ .slideFirst .radio-button[for="slideFirst"]::after,
+  #slideSecond:checked ~ .slideSecond .radio-button[for="slideSecond"]::after {
+	display: none; 
+  }
+  
+  #slideFirst:checked ~ .slideFirst .radio-button[for="slideFirst"],
+  #slideSecond:checked ~ .slideSecond .radio-button[for="slideSecond"] {
+	background-color: #cf578d; 
+  }
+  
+.bottle-img-slide {
+	position: absolute;
+	bottom: -50px;
+    left: -149px;
+	width: 235px;
+    height: 690px;
+}
+
+/* Отображение затемняющего фона при активном слайдере */
+.overlay {
+    position: fixed;
+    top: 0;
+	  left: 200%;
+    width: 1024px;
+    height: 768px;
+    background-color: rgba(0, 0, 0, 0.5); 
+    display: none; 
+    z-index: 1; 
+}
+
+.slider.active + .overlay {
+    display: block;
+}

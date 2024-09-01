@@ -1,0 +1,165 @@
+.slider-text-block {
+	text-align: left;
+}
+
+.radio-block {
+	display: flex;
+}
+
+.slider-container {
+	position: relative;
+	overflow: hidden; /* Скрывает содержимое, выходящее за пределы контейнера */
+  }
+  
+  .slider-toggle {
+	display: none; /* Скрывает переключатель для открытия слайдера */
+	
+  }
+  
+  .open-slider-button {
+	background-color: #ff6a9f;
+	border: none;
+	border-radius: 60px;
+	padding: 15px 35px 15px 20px;
+	display: flex;
+	align-items: center;
+	width: 265px;
+	gap: 30px;
+	font-size: 24px;
+  }
+  
+  .slider {
+	position: fixed; /* Перекрывает часть предыдущего контента */
+	top: 50%;
+	left: 50%;
+	width: 80%;
+	height: 60%;
+	transform: translate(-50%, -50%);
+	background-color: white;
+	/* border: 2px solid #000; */
+	display: none; /* По умолчанию скрыт */
+  }
+  
+  .slider-toggle:checked ~ .slider {
+	display: block; /* Показывает слайдер, когда чекбокс включен */
+  }
+  
+  .slide {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	display: none; /* По умолчанию слайды скрыты */
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	background-color: #f0f0f0;
+	padding: 20px;
+    border: 1px solid red;
+    border-radius: 20px;
+  }
+  
+  #slide1:checked ~ .slide1,
+  #slide2:checked ~ .slide2 {
+	display: flex; /* Показывает только активный слайд */
+	flex-direction: column;
+  }
+  
+  .nav-button {
+	cursor: pointer;
+	border: none; /* Убираем рамку */
+	background: none; /* Убираем фон */
+	padding: 10px;
+	display: inline-block;
+	position: relative; /* Для позиционирования псевдоэлементов */
+	width: 24px; /* Ширина кнопки */
+	height: 24px; /* Высота кнопки */
+	font-size: 0; /* Убираем текст, если есть */
+	line-height: 0; /* Убираем текст */
+	margin: 0; /* Убираем отступы */
+	color: transparent; /* Убираем текст, если есть */
+  }
+  
+  .nav-button.prev::before,
+  .nav-button.prev::after {
+	content: "";
+	position: absolute;
+	width: 2px; /* Толщина линии */
+	height: 16px; /* Длина линии */
+	background-color: #000; /* Черный цвет линии */
+  }
+  
+  .nav-button.next::before {
+	transform: rotate(45deg); /* Наклон влево */
+	top: 14px;
+	left: 37px;
+  }
+  
+  .nav-button.next::after {
+	transform: rotate(-45deg); /* Наклон вправо */
+	top: 4px;
+	left: 37px;
+  }
+  
+  .nav-button.next::before,
+  .nav-button.next::after {
+	content: "";
+	position: absolute;
+	width: 2px; /* Толщина линии */
+	height: 16px; /* Длина линии */
+	background-color: #000; /* Черный цвет линии */
+  }
+  
+  .nav-button.prev::before {
+	transform: rotate(-45deg); /* Наклон вправо */
+	top: 14px;
+	left: 8px;
+  }
+  
+  .nav-button.prev::after {
+	transform: rotate(45deg); /* Наклон влево */
+	top: 4px;
+	left: 8px;
+  }
+  
+  .radio-button {
+	cursor: pointer;
+	width: 20px;  /* Фиксированный размер */
+	height: 20px; /* Фиксированный размер */
+	display: inline-block;
+	margin: 5px;
+	border-radius: 50%; /* Делает кружочек */
+	background-color: transparent; /* Прозрачный фон для неактивных */
+	border: 2px solid #000; /* Черная граница для неактивных */
+	position: relative; /* Позиционирование для белого центра */
+  }
+  
+  .radio-button::after {
+	content: "";
+	width: 10px; /* Размер белого центра */
+	height: 10px; /* Размер белого центра */
+	background-color: #fff; /* Белый цвет центра */
+	border-radius: 50%; /* Круглый центр */
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%); /* Центрирование белого кружка */
+  }
+  
+  #slide1:checked ~ .slide1 .radio-button[for="slide1"],
+  #slide2:checked ~ .slide2 .radio-button[for="slide2"] {
+	background-color: #cf578d; /* Розовый цвет для активной кнопки */
+	border: 2px solid #cf578d; /* Убирает границу для активной кнопки */
+  }
+  
+  #slide1:checked ~ .slide1 .radio-button[for="slide1"]::after,
+  #slide2:checked ~ .slide2 .radio-button[for="slide2"]::after {
+	display: none; /* Убирает белый центр для активной кнопки */
+  }
+  
+  #slide1:checked ~ .slide1 .radio-button[for="slide1"],
+  #slide2:checked ~ .slide2 .radio-button[for="slide2"] {
+	background-color: #cf578d; /* Цвет активной радиокнопки */
+  }
+  
